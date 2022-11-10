@@ -4,10 +4,11 @@
  */
 exports.up = function (knex) {
     return knex.schema.createTable('user', (table) => {
-        table.increments('id')
-        table.string('uuid').unique()
+        table.increments('user_id')
         table.string('email').unique()
-        table.string('username')
+        table.boolean("enable")
+        table.string('uuid').unique()
+        table.integer("alter_id")
     })
 };
 

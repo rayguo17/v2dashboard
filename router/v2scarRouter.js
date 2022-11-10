@@ -5,12 +5,15 @@ class V2scarRouter {
     }
     router() {
         const router = express.Router()
-        router.get("/userInfo", this.allUserInfo.bind(this))
-        router.post("/stats", this.updateStats.bind(this))
+        router.get("/", this.allUserInfo.bind(this))
+        router.post("/", this.updateStats.bind(this))
         return router
     }
     async allUserInfo(req, res) {
 
+        let resGet = await this.service.getAllUser()
+        console.log("resGet", resGet)
+        res.json({ Configs: resGet })
     }
     async updateStats(req, res) {
 

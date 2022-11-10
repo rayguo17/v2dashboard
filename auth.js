@@ -3,11 +3,12 @@ const passportJWT = require('passport-jwt')
 const ExtraJwt = passportJWT.ExtractJwt
 const adminId = "iamadmin"
 
-module.exports = () => {
+let auth = () => {
     const strategy = new passportJWT.Strategy({
         secretOrKey: "supersecret",
         jwtFromRequest: ExtraJwt.fromAuthHeaderAsBearerToken()
     }, async (payload, done) => {
+        //console.log(payload)
         if (payload.id === adminId) {
             return done(null, { id: adminId })
         } else {
@@ -26,4 +27,7 @@ module.exports = () => {
 
         }
     }
+}
+module.exports = {
+    auth, adminId
 }
