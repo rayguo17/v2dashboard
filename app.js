@@ -34,5 +34,5 @@ app.use('/api/v2scar', apiAuth, new V2scarRouter(new V2scarService(knex)).router
 
 
 server.listen(8001, () => {
-    console.log('server running on port 8080...')
+    console.log('server running on port 8001...')
 })

@@ -16,7 +16,14 @@ class V2scarRouter {
         res.json({ Configs: resGet })
     }
     async updateStats(req, res) {
+        console.log(req.body)
+        //safe the reqbody
+        req.body.user_traffics.map(async e => {
+            let stats = await this.service.storeStats(e)
+            console.log(stats)
+        })
 
+        res.sendStatus(200)
     }
 }
 module.exports = V2scarRouter

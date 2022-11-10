@@ -6,8 +6,9 @@ exports.up = function (knex) {
     return knex.schema.createTable('stats', (table) => {
         table.increments('stats_id')
         table.integer('user_id')
-        table.dateTime('time')
-        table.bigInteger('traffic')
+        table.timestamp('created_at').defaultTo(knex.fn.now());
+        table.bigInteger('ut')
+        table.bigInteger('dt')
         table.foreign('user_id').references("user.user_id")
     })
 };
